@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class ConstructionImpl implements Construction {
 
-    private ICity iCity;
+    private ICity city;
 
     private boolean isWork;
 
@@ -19,18 +19,18 @@ public class ConstructionImpl implements Construction {
 
     @Override
     public ICity getICity() {
-        return iCity;
+        return city;
     }
 
     public void setICity(ICity iCity) {
-        this.iCity = iCity;
+        this.city = iCity;
     }
 
     @Override
     public void run() {
         System.out.print("Введите название города: ");
         String cityName = sc.nextLine();
-        iCity = new City(cityName);
+        city = new City(cityName);
         System.out.println("Город создан.");
 
         while (isWork) {
@@ -43,7 +43,7 @@ public class ConstructionImpl implements Construction {
             if (cmd == 1) {
                 createHouse();
             } else if (cmd == 2) {
-                iCity.showSettledList();
+                city.showSettledList();
             } else if (cmd == 3) {
                 addSettlerToFlat();
             } else {
@@ -86,7 +86,7 @@ public class ConstructionImpl implements Construction {
     }
 
     private IHouse getiHouse(String address) {
-        return iCity.getHouseList().stream()
+        return city.getHouseList().stream()
             .filter(house -> house.getAddress().equals(address))
             .findFirst()
             .orElse(null);
@@ -130,7 +130,7 @@ public class ConstructionImpl implements Construction {
             house.addFlat(flat);
         }
 
-        iCity.addHouse(house);
+        city.addHouse(house);
         System.out.println("Дом построен");
     }
 
