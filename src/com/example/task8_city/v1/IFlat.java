@@ -4,6 +4,8 @@ import java.util.List;
 
 public interface IFlat {
 
+    int DEFAULT_CAPACITY = 2;
+
     int getNumber();
 
     List<Settler> getSettlerList();

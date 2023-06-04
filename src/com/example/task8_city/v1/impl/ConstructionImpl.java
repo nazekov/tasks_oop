@@ -68,7 +68,7 @@ public class ConstructionImpl implements Construction {
 
         if (iFlatFound == null) {
             System.out.println("Квартиры с таким номером нет.");
-        } else if (iFlatFound.getSettlerList().size() < 2) {
+        } else if (iFlatFound.getSettlerList().size() < IFlat.DEFAULT_CAPACITY) {
             System.out.println("Введите имя нового жителя:");
             Settler settler = new Settler(sc.nextLine());
             iFlatFound.addSettler(settler);
@@ -137,9 +137,9 @@ public class ConstructionImpl implements Construction {
     private int getCountSettlers() throws SettlerException {
         System.out.println("Введите количество жителей квартиры: ");
         int countSettlers = Integer.parseInt(sc.nextLine());
-        if (countSettlers > 2) {
+        if (countSettlers > IFlat.DEFAULT_CAPACITY) {
             throw new SettlerException(
-                "Количество жителей в одной квартире должно быть не больше двух"
+                "Количество жителей в одной квартире должно быть не больше " + IFlat.DEFAULT_CAPACITY
             );
         }
         return countSettlers;

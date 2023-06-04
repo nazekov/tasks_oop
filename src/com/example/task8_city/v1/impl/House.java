@@ -2,7 +2,6 @@ package com.example.task8_city.v1.impl;
 
 import com.example.task8_city.v1.IFlat;
 import com.example.task8_city.v1.IHouse;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
