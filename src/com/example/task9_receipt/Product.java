@@ -65,11 +65,11 @@ public class Product {
 
     @Override
     public String toString() {
-        return "ID:" + id + ","
+        return "ID:" + id + ", "
                 + "Товар: " + name + ","
                 + Util.getCalcSpaceToMaxElem(maxSpace2, name) + " "
-                + "Цена: " + price + ","
+                + "Цена: " + price + ", "
                 + Util.getCalcSpaceToMaxElem(maxSpace3, price.toString()) + " "
-                + "Скидка в %: " + percentDiscount;
+                + "Скидка в %: " + percentDiscount + " ";
     }
 }

@@ -78,7 +78,8 @@ public class Order implements IOrder {
 
     @Override
     public void showInfo() {
-        String left = String.format("%s%s%s%s%s%s%s", Receipt.BORDER_LINE,
+        String left = String.format("%s%s%s%s%s%s%s",
+                                    Receipt.BORDER_LINE,
                                     Receipt.BORDER_BLANK,
                                     Item.QTY_STR,
                                     Util.getCalcSpaceToMaxElem(Item.MAX_COUNT_LENGTH, Item.QTY_STR),
