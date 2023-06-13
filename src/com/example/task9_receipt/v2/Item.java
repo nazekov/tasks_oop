@@ -79,33 +79,33 @@ public class Item {
 
     public void showInfo(String middleSpace) {
         String item = String.format("%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s",
-                Receipt.BORDER_LINE,
-                Receipt.BORDER_BLANK,
-                count,
-                Util.getCalcSpaceToMaxElem(MAX_COUNT_LENGTH, String.valueOf(count)),
-                BETWEEN_BLANK,
+            Receipt.BORDER_LINE,
+            Receipt.BORDER_BLANK,
+            count,
+            Util.getCalcSpaceToMaxElem(MAX_COUNT_LENGTH, String.valueOf(count)),
+            BETWEEN_BLANK,
 
-                product.getName(),
-                Util.getCalcSpaceToMaxElem(MAX_DESCRIPTION_LENGTH, product.getName()),
+            product.getName(),
+            Util.getCalcSpaceToMaxElem(MAX_DESCRIPTION_LENGTH, product.getName()),
 
-                middleSpace,
+            middleSpace,
 
-                Util.getCalcSpaceToMaxElem(MAX_PRICE_LENGTH, Item.CURRENCY_SYMBOL + product.getPrice().toString()),
-                Item.CURRENCY_SYMBOL,
-                product.getPrice().toString(),
-                BETWEEN_BLANK,
+            Util.getCalcSpaceToMaxElem(MAX_PRICE_LENGTH, Item.CURRENCY_SYMBOL + product.getPrice().toString()),
+            Item.CURRENCY_SYMBOL,
+            product.getPrice().toString(),
+            BETWEEN_BLANK,
 
-                Util.getCalcSpaceToMaxElem(MAX_DISCOUNT_LENGTH, Item.CURRENCY_SYMBOL + discount.toString()),
-                Item.CURRENCY_SYMBOL,
-                discount.toString(),
-                BETWEEN_BLANK,
+            Util.getCalcSpaceToMaxElem(MAX_DISCOUNT_LENGTH, Item.CURRENCY_SYMBOL + discount.toString()),
+            Item.CURRENCY_SYMBOL,
+            discount.toString(),
+            BETWEEN_BLANK,
 
-                Util.getCalcSpaceToMaxElem(MAX_TOTAL_LENGTH, Item.CURRENCY_SYMBOL + total.toString()),
-                Item.CURRENCY_SYMBOL,
-                total.toString(),
+            Util.getCalcSpaceToMaxElem(MAX_TOTAL_LENGTH, Item.CURRENCY_SYMBOL + total.toString()),
+            Item.CURRENCY_SYMBOL,
+            total.toString(),
 
-                Receipt.BORDER_BLANK,
-                Receipt.BORDER_LINE
+            Receipt.BORDER_BLANK,
+            Receipt.BORDER_LINE
         );
         System.out.println(item);
     }

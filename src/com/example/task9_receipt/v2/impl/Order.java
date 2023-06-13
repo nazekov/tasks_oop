@@ -4,7 +4,6 @@ import com.example.task9_receipt.v2.IOrder;
 import com.example.task9_receipt.v2.Item;
 import com.example.task9_receipt.v2.Receipt;
 import com.example.task9_receipt.v2.Util;
-
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -80,34 +79,29 @@ public class Order implements IOrder {
     @Override
     public void showInfo() {
         String left = String.format("%s%s%s%s%s%s%s",
-                                    Receipt.BORDER_LINE,
-                                    Receipt.BORDER_BLANK,
-                                    Item.QTY_STR,
-                                    Util.getCalcSpaceToMaxElem(Item.MAX_COUNT_LENGTH, Item.QTY_STR),
-                                    Item.BETWEEN_BLANK,
-                                    Item.DESCRIPTION_STR,
-                                    Util.getCalcSpaceToMaxElem(Item.MAX_DESCRIPTION_LENGTH, Item.DESCRIPTION_STR)
-                                    );
-
+            Receipt.BORDER_LINE,
+            Receipt.BORDER_BLANK,
+            Item.QTY_STR,
+            Util.getCalcSpaceToMaxElem(Item.MAX_COUNT_LENGTH, Item.QTY_STR),
+            Item.BETWEEN_BLANK,
+            Item.DESCRIPTION_STR,
+            Util.getCalcSpaceToMaxElem(Item.MAX_DESCRIPTION_LENGTH, Item.DESCRIPTION_STR)
+        );
         String right = String.format("%s%s%s%s%s%s%s%s%s%s",
-                                    Util.getCalcSpaceToMaxElem(Item.MAX_PRICE_LENGTH, Item.PRICE_STR),
-                                    Item.PRICE_STR,
-                                    Item.BETWEEN_BLANK,
-                                    Util.getCalcSpaceToMaxElem(Item.MAX_DISCOUNT_LENGTH, Item.DISCOUNT_STR),
-                                    Item.DISCOUNT_STR,
-                                    Item.BETWEEN_BLANK,
-                                    Util.getCalcSpaceToMaxElem(Item.MAX_TOTAL_LENGTH, Item.TOTAL_STR),
-                                    Item.TOTAL_STR,
-                                    Receipt.BORDER_BLANK,
-                                    Receipt.BORDER_LINE
-                                    );
-
+            Util.getCalcSpaceToMaxElem(Item.MAX_PRICE_LENGTH, Item.PRICE_STR),
+            Item.PRICE_STR,
+            Item.BETWEEN_BLANK,
+            Util.getCalcSpaceToMaxElem(Item.MAX_DISCOUNT_LENGTH, Item.DISCOUNT_STR),
+            Item.DISCOUNT_STR,
+            Item.BETWEEN_BLANK,
+            Util.getCalcSpaceToMaxElem(Item.MAX_TOTAL_LENGTH, Item.TOTAL_STR),
+            Item.TOTAL_STR,
+            Receipt.BORDER_BLANK,
+            Receipt.BORDER_LINE
+        );
         String middleSpace = Util.getCalcSpace(Receipt.WIDTH - left.length() - right.length(), ' ');
-
         String headTable = String.format("%s%s%s", left, middleSpace, right);
-
         String viewEmptySpace = Receipt.getViewEmptySpace();
-
         System.out.println(viewEmptySpace + "\n"
                             + headTable + "\n"
                             + viewEmptySpace);
@@ -120,9 +114,8 @@ public class Order implements IOrder {
             Receipt.getViewStrTwoPosition("TAXABLE TOT.", Item.CURRENCY_SYMBOL + taxableTotal.toString()),
             Receipt.getViewStrTwoPosition("VAT17%", Item.CURRENCY_SYMBOL + vat.toString()),
             Receipt.getViewStrTwoPosition("TOTAL", Item.CURRENCY_SYMBOL + total.toString()),
-            viewEmptySpace
+            Receipt.getViewTopDown()
         );
-
-        System.out.println(totalStr + "\n" + Receipt.getViewTopDown());
+        System.out.println(totalStr);
     }
 }
