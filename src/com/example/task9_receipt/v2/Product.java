@@ -16,8 +16,6 @@ public class Product {
 
     public static int maxSpace3;
 
-    private StringBuilder stringBuilder;
-
     private BigDecimal percentDiscount;
 
     public Product() {
@@ -28,7 +26,6 @@ public class Product {
         this.name = name;
         this.price = price;
         this.percentDiscount = percentDiscount;
-        stringBuilder = new StringBuilder();
     }
 
     public int getId() {
@@ -61,15 +58,5 @@ public class Product {
 
     public void setPercentDiscount(BigDecimal percentDiscount) {
         this.percentDiscount = percentDiscount;
-    }
-
-    @Override
-    public String toString() {
-        return "ID:" + id + ", "
-                + "Товар: " + name + ","
-                + Util.getCalcSpaceToMaxElem(maxSpace2, name) + " "
-                + "Цена: " + price + ", "
-                + Util.getCalcSpaceToMaxElem(maxSpace3, price.toString()) + " "
-                + "Скидка в %: " + percentDiscount + " ";
     }
 }

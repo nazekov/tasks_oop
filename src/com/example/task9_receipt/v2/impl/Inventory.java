@@ -40,8 +40,21 @@ public class Inventory implements IInventory {
 
     @Override
     public void showInfo() {
-        System.out.println(product
-                + Util.getCalcSpaceToMaxElem(maxSpace, product.getPercentDiscount().toString())
-                + "Количество: " + count);
+        String productInfo = String.format("ID:%d, Товар: %s,%s Цена: %s, %sСкидка в %%: %s ",
+            product.getId(),
+            product.getName(),
+            Util.getCalcSpaceToMaxElem(Product.maxSpace2, product.getName()),
+            product.getPrice().toString(),
+            Util.getCalcSpaceToMaxElem(Product.maxSpace3, product.getPrice().toString()),
+            product.getPercentDiscount()
+        );
+
+        String inventoryInfo = String.format("%s%sКоличество: %d",
+            productInfo,
+            Util.getCalcSpaceToMaxElem(maxSpace, product.getPercentDiscount().toString()),
+            count
+        );
+
+        System.out.println(inventoryInfo);
     }
 }
