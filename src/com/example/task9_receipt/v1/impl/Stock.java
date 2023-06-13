@@ -1,7 +1,7 @@
-package com.example.task9_receipt.impl;
+package com.example.task9_receipt.v1.impl;
 
-import com.example.task9_receipt.IStock;
-import com.example.task9_receipt.IInventory;
+import com.example.task9_receipt.v1.IStock;
+import com.example.task9_receipt.v1.IInventory;
 import java.util.ArrayList;
 import java.util.List;
 

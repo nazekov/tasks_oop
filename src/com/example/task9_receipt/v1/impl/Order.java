@@ -1,9 +1,9 @@
-package com.example.task9_receipt.impl;
+package com.example.task9_receipt.v1.impl;
 
-import com.example.task9_receipt.IOrder;
-import com.example.task9_receipt.Item;
-import com.example.task9_receipt.Receipt;
-import com.example.task9_receipt.Util;
+import com.example.task9_receipt.v1.IOrder;
+import com.example.task9_receipt.v1.Item;
+import com.example.task9_receipt.v1.Receipt;
+import com.example.task9_receipt.v1.Util;
 import java.math.BigDecimal;
 import java.util.List;
 

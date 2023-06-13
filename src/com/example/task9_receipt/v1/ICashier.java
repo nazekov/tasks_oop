@@ -1,6 +1,4 @@
-package com.example.task9_receipt;
-
-import com.example.task9_receipt.impl.Shop;
+package com.example.task9_receipt.v1;
 
 public interface ICashier {
 

@@ -1,6 +1,6 @@
-package com.example.task9_receipt;
+package com.example.task9_receipt.v1;
 
-import com.example.task9_receipt.impl.Inventory;
+import com.example.task9_receipt.v1.impl.Inventory;
 import java.util.List;
 
 public interface IStock {

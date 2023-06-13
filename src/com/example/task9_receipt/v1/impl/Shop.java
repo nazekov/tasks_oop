@@ -1,6 +1,7 @@
-package com.example.task9_receipt.impl;
+package com.example.task9_receipt.v1.impl;
 
-import com.example.task9_receipt.*;
+import com.example.task9_receipt.v1.*;
+
 import java.math.BigDecimal;
 import java.util.Scanner;
 

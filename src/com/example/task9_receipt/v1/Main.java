@@ -1,6 +1,6 @@
-package com.example.task9_receipt;
+package com.example.task9_receipt.v1;
 
-import com.example.task9_receipt.impl.Shop;
+import com.example.task9_receipt.v1.impl.Shop;
 
 public class Main {
     public static void main(String[] args) {

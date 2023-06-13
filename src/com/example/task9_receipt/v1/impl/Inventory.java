@@ -1,8 +1,8 @@
-package com.example.task9_receipt.impl;
+package com.example.task9_receipt.v1.impl;
 
-import com.example.task9_receipt.IInventory;
-import com.example.task9_receipt.Product;
-import com.example.task9_receipt.Util;
+import com.example.task9_receipt.v1.IInventory;
+import com.example.task9_receipt.v1.Product;
+import com.example.task9_receipt.v1.Util;
 
 public class Inventory implements IInventory {
 

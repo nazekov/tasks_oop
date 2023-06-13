@@ -1,4 +1,4 @@
-package com.example.task9_receipt;
+package com.example.task9_receipt.v1;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
