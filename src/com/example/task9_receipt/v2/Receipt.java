@@ -55,7 +55,7 @@ public class Receipt {
                             + getViewEmptySpace() + "\n"
                             + cashierDateStr + "\n"
                             + getViewStrTime(cashierDateStr, timeStr) + "\n"
-                            + getViewOneLine("-")
+                            + getViewOneLine('-')
         );
         order.showInfo();
     }
@@ -64,14 +64,14 @@ public class Receipt {
         int count = WIDTH - 2 * BORDER_LINE.length() - 2 * BORDER_BLANK.length();
         return String.format("%s%s%s%s%s", BORDER_LINE,
                                             BORDER_BLANK,
-                                            Util.getCalcSpace(count, " "),
+                                            Util.getCalcSpace(count, ' '),
                                             BORDER_BLANK,
                                             BORDER_LINE);
     }
 
-    public static String getViewOneLine(String str) {
+    public static String getViewOneLine(char sym) {
         int count = WIDTH - 2 * BORDER_LINE.length() - 2 * BORDER_BLANK.length();
-        String calcSpaceLine = Util.getCalcSpace(count, str);
+        String calcSpaceLine = Util.getCalcSpace(count, sym);
         return String.format("%s%s%s%s%s", BORDER_LINE,
                                             BORDER_BLANK,
                                             calcSpaceLine,
@@ -80,15 +80,15 @@ public class Receipt {
     }
 
     public static String getViewTopDown() {
-        return Util.getCalcSpace(WIDTH, "_");
+        return Util.getCalcSpace(WIDTH, '_');
     }
 
     private static String getViewStrTime(String cashierDateStr, String timeStr) {
         int index = cashierDateStr.indexOf("D");
         int count = index - BORDER_LINE.length() - BORDER_BLANK.length() ;
-        String calcSpaceToTimeStr = Util.getCalcSpace(count, " ");
+        String calcSpaceToTimeStr = Util.getCalcSpace(count, ' ');
         count = WIDTH - timeStr.length() - count - 2 * BORDER_BLANK.length() - 2 * BORDER_BLANK.length();
-        String calcSpaceAfterTimeStr = Util.getCalcSpace(count, " ");
+        String calcSpaceAfterTimeStr = Util.getCalcSpace(count, ' ');
         return String.format("%s%s%s%s%s%s%s", BORDER_LINE,
                                         BORDER_BLANK,
                                         calcSpaceToTimeStr,
@@ -103,7 +103,7 @@ public class Receipt {
                             - 2 * BORDER_BLANK.length()
                             - str1.length()
                             - str2.length();
-        String middleBlanks = Util.getCalcSpace(count, " ");
+        String middleBlanks = Util.getCalcSpace(count, ' ');
         return String.format("%s%s%s%s%s%s%s", BORDER_LINE, BORDER_BLANK,
                                         str1, middleBlanks, str2,
                                         BORDER_BLANK, BORDER_LINE);
@@ -111,10 +111,10 @@ public class Receipt {
 
     private static String getViewOneStr(String elem) {
         int count = (WIDTH - 2 * BORDER_LINE.length() - 2 * BORDER_BLANK.length() - elem.length()) / 2;
-        String leftBlanksFromName = Util.getCalcSpace(count, " ");
+        String leftBlanksFromName = Util.getCalcSpace(count, ' ');
         String str = String.format("%s%s%s%s", BORDER_LINE, BORDER_BLANK, leftBlanksFromName, elem);
         count = WIDTH - BORDER_LINE.length() - BORDER_BLANK.length() - str.length();
-        String rightBlanksFromName = Util.getCalcSpace(count, " ");
+        String rightBlanksFromName = Util.getCalcSpace(count, ' ');
         return String.format("%s%s%s%s", str, rightBlanksFromName, BORDER_BLANK, BORDER_LINE);
     }
 

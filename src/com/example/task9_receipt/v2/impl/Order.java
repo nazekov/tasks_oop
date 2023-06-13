@@ -102,7 +102,7 @@ public class Order implements IOrder {
                                     Receipt.BORDER_LINE
                                     );
 
-        String middleSpace = Util.getCalcSpace(Receipt.WIDTH - left.length() - right.length(), " ");
+        String middleSpace = Util.getCalcSpace(Receipt.WIDTH - left.length() - right.length(), ' ');
 
         String headTable = String.format("%s%s%s", left, middleSpace, right);
 
@@ -115,7 +115,7 @@ public class Order implements IOrder {
 
         String totalStr = String.format("%s\n%s\n%s\n%s\n%s\n%s\n%s",
             viewEmptySpace,
-            Receipt.getViewOneLine("="),
+            Receipt.getViewOneLine('='),
             viewEmptySpace,
             Receipt.getViewStrTwoPosition("TAXABLE TOT.", Item.CURRENCY_SYMBOL + taxableTotal.toString()),
             Receipt.getViewStrTwoPosition("VAT17%", Item.CURRENCY_SYMBOL + vat.toString()),
