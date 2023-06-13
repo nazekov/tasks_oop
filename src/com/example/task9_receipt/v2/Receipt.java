@@ -2,6 +2,7 @@ package com.example.task9_receipt.v2;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 public class Receipt {
 
@@ -39,6 +40,55 @@ public class Receipt {
 
     public IOrder getOrder() {
         return order;
+    }
+
+    public void calculateSpacesForReceipt() {
+        List<Item> itemList = order.getItemList();
+        calculateMaxCountLength(itemList);
+        calculateMaxDescriptionLength(itemList);
+        calculateMaxPriceLength(itemList);
+        calculateMaxDiscountLength(itemList);
+        calculateMaxTotalLength(itemList);
+    }
+
+    private void calculateMaxTotalLength(List<Item> itemList) {
+        Item.MAX_TOTAL_LENGTH = itemList.stream()
+                .mapToInt(item -> item.getTotal().toString().length() + Item.CURRENCY_SYMBOL.length())
+                .max()
+                .getAsInt();
+        Item.MAX_TOTAL_LENGTH = Math.max(Item.TOTAL_STR.length(), Item.MAX_TOTAL_LENGTH);
+    }
+
+    private void calculateMaxDiscountLength(List<Item> itemList) {
+        Item.MAX_DISCOUNT_LENGTH = itemList.stream()
+                .mapToInt(item -> item.getDiscount().toString().length() + Item.CURRENCY_SYMBOL.length())
+                .max()
+                .getAsInt();
+        Item.MAX_DISCOUNT_LENGTH = Math.max(Item.DISCOUNT_STR.length(), Item.MAX_DISCOUNT_LENGTH);
+    }
+
+    private void calculateMaxPriceLength(List<Item> itemList) {
+        Item.MAX_PRICE_LENGTH = itemList.stream()
+                .mapToInt(item -> item.getProduct().getPrice().toString().length() + Item.CURRENCY_SYMBOL.length())
+                .max()
+                .getAsInt();
+        Item.MAX_PRICE_LENGTH = Math.max(Item.PRICE_STR.length(), Item.MAX_PRICE_LENGTH);
+    }
+
+    private void calculateMaxDescriptionLength(List<Item> itemList) {
+        Item.MAX_DESCRIPTION_LENGTH = itemList.stream()
+                .mapToInt(item -> item.getProduct().getName().length())
+                .max()
+                .getAsInt();
+        Item.MAX_DESCRIPTION_LENGTH = Math.max(Item.DESCRIPTION_STR.length(), Item.MAX_DESCRIPTION_LENGTH);
+    }
+
+    private void calculateMaxCountLength(List<Item> itemList) {
+        Item.MAX_COUNT_LENGTH = itemList.stream()
+                .mapToInt(item -> String.valueOf(item.getCount()).length())
+                .max()
+                .getAsInt();
+        Item.MAX_COUNT_LENGTH = Math.max(Item.QTY_STR.length(), Item.MAX_COUNT_LENGTH);
     }
 
     public void showInfo() {

@@ -1,11 +1,10 @@
 package com.example.task9_receipt.v2.impl;
 
-import com.example.task9_receipt.v2.IOrder;
-import com.example.task9_receipt.v2.Item;
-import com.example.task9_receipt.v2.Receipt;
-import com.example.task9_receipt.v2.Util;
+import com.example.task9_receipt.v2.*;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Order implements IOrder {
 
@@ -19,11 +18,44 @@ public class Order implements IOrder {
 
     private BigDecimal total;
 
+    private static Scanner sc;
+
     public Order() {
+        sc = new Scanner(System.in);
     }
 
     public Order(List<Item> itemList) {
+        sc = new Scanner(System.in);
         this.itemList = itemList;
+        calculateTotalPriceForEveryItem();
+        this.taxableTotal = calculateTaxableTotal();
+        this.vat = calculateVat();
+        this.total = taxableTotal.add(vat).setScale(2, BigDecimal.ROUND_HALF_UP);
+    }
+
+    private BigDecimal calculateVat() {
+        BigDecimal unit = IOrder.PERCENT_VAT.divide(new BigDecimal(100));
+        return taxableTotal.multiply(unit)
+                .setScale(2, BigDecimal.ROUND_HALF_UP);
+    }
+
+    private BigDecimal calculateTaxableTotal() {
+        BigDecimal taxableTotal = new BigDecimal(0);
+        List<BigDecimal> collectTotalList = itemList.stream()
+                .map(Item::getTotal)
+                .collect(Collectors.toList());
+        for (BigDecimal total : collectTotalList) {
+            taxableTotal = taxableTotal.add(total);
+        }
+
+        System.out.println("Есть ли у вас скидочная карта: 1 - Да / Любая клав. - Нет: ");
+        if (sc.nextLine().equals("1")) {
+            BigDecimal unit = IOrder.PERCENT_DISCOUNT.divide(new BigDecimal(100));
+            unit = new BigDecimal(1).subtract(unit);
+            taxableTotal = taxableTotal.multiply(unit);
+        }
+
+        return taxableTotal;
     }
 
     @Override
@@ -117,5 +149,35 @@ public class Order implements IOrder {
             Receipt.getViewTopDown()
         );
         System.out.println(totalStr);
+    }
+
+    private void calculateTotalPriceForEveryItem() {
+        for (Item item : itemList) {
+            Product product = item.getProduct();
+            BigDecimal price = product.getPrice();
+            BigDecimal percentDiscount = product.getPercentDiscount();
+
+            BigDecimal sum = price.multiply(new BigDecimal(item.getCount()));
+            BigDecimal discount = new BigDecimal(0);
+
+            if (isDiscount(item.getCount(), percentDiscount)) {
+                BigDecimal unit = percentDiscount.divide(new BigDecimal(100));
+                discount = sum.multiply(unit).setScale(2, BigDecimal.ROUND_HALF_UP);
+            }
+
+            BigDecimal totalSum = sum.subtract(discount)
+                    .setScale(2, BigDecimal.ROUND_HALF_UP);
+
+            item.setDiscount(discount);
+            item.setTotal(totalSum);
+        }
+    }
+
+    private boolean isDiscount(int count, BigDecimal percentDiscount) {
+        return count >= Product.COUNT_FOR_DISCOUNT && containsDiscount(percentDiscount);
+    }
+
+    private boolean containsDiscount(BigDecimal percentDiscount) {
+        return percentDiscount.compareTo(BigDecimal.valueOf(0)) != 0;
     }
 }
