@@ -215,9 +215,13 @@ public class Cashier implements ICashier {
 
             if (inventory == null) {
                 System.out.println("Такого товара нет в магазине.");
-                System.out.println("Продолжить выбор товара дальше? (ENTER - да / 0 - нет)");
                 isChoose = isContinueForChoose();
-                Util.clearConsole();
+                continue;
+            }
+
+            if (count <= 0) {
+                System.out.println("Неверный ввод данных");
+                isChoose = isContinueForChoose();
                 continue;
             }
 
@@ -238,9 +242,7 @@ public class Cashier implements ICashier {
                 itemFound.setCount(itemFound.getCount() + count);
             }
 
-            System.out.println("Продолжить выбор товара дальше? (ENTER - да / 0 - нет)");
             isChoose = isContinueForChoose();
-            Util.clearConsole();
         }
         return itemList;
     }
@@ -261,7 +263,10 @@ public class Cashier implements ICashier {
     }
 
     private boolean isContinueForChoose() {
-        return !sc.nextLine().equals("0");
+        System.out.println("Продолжить выбор товара дальше? (ENTER - да / 0 - нет)");
+        boolean rsl = !sc.nextLine().equals("0");
+        Util.clearConsole();
+        return rsl;
     }
 
     @Override
