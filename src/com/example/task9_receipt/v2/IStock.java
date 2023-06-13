@@ -1,7 +1,5 @@
 package com.example.task9_receipt.v2;
 
-import com.example.task9_receipt.v2.impl.Inventory;
-
 import java.util.List;
 
 public interface IStock {
@@ -10,7 +8,7 @@ public interface IStock {
 
     void addInventory(IInventory item);
 
-    Inventory getInventory(int id);
+    IInventory getInventory(int id);
 
     void showAllInfo();
 }

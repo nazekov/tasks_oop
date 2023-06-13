@@ -33,8 +33,8 @@ public class Stock implements IStock {
     }
 
     @Override
-    public Inventory getInventory(int id) {
-        return (Inventory) inventoryItemList.stream()
+    public IInventory getInventory(int id) {
+        return inventoryItemList.stream()
                 .filter(inventory -> inventory.getProduct().getId() == id)
                 .findFirst()
                 .orElse(null);

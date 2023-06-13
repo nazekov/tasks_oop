@@ -71,7 +71,7 @@ public class Cashier implements ICashier {
                 "12, MILKYWAY Galaxy/ Earth",
                 "123-456-7890");
         List<Item> itemList = chooseProducts();
-        calculateTotalPriceForEveryItem(itemList);
+        calculateTotalPriceForEveryItem(itemList); // для каждого товара считаются итоговые цены
 
         calculateSpacesForReceipt(itemList);// здесь считаются пробелы
 
@@ -211,7 +211,7 @@ public class Cashier implements ICashier {
             System.out.print("Введите кол-во желаемых товаров: ");
             int count = Util.getNumber();
 
-            Inventory inventory = stock.getInventory(id);
+            Inventory inventory = (Inventory) stock.getInventory(id);
 
             if (inventory == null) {
                 System.out.println("Такого товара нет в магазине.");
